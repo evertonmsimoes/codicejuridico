@@ -5,10 +5,12 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
 
+# Função para Adicionar as Rotas da Nossa Aplicação;
 def init_routers(app_: FastAPI) -> None:
-    app_.include_router()
+#    app_.include_router()
+    pass
 
-
+# Função para configurar os middlewares de nossa aplicação, em nosso cenario usamos apenas para configurar o recursos de CORS.
 def make_middleware() -> List[Middleware]:
     middleware = [
         Middleware(
@@ -23,6 +25,7 @@ def make_middleware() -> List[Middleware]:
     return middleware
 
 
+# Função para instaciar a nossa instancia do Fast API.
 def create_app() -> FastAPI:
     app_ = FastAPI(
         title="Códice Jurídico",

@@ -1,5 +1,5 @@
 from enum import Enum
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 import os
 
@@ -27,7 +27,7 @@ class Config(BaseConfig):
 
 # Função para validar se o ENVIRONMENT esté dentro dos Valores definidos.
 def validate_environment(config: Config):
-    if config.ENVIRONMENT not in EnvironmentType.__members__:
+    if config.ENVIRONMENT not in EnvironmentType.__members__.keys():
         raise ValueError(f"ENVIRONMENT '{config.ENVIRONMENT}' não é válido. Use um dos seguintes valores: {', '.join(EnvironmentType.__members__.keys())}")
 
 try:
