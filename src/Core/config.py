@@ -27,8 +27,8 @@ class Config(BaseConfig):
 
 # Função para validar se o ENVIRONMENT esté dentro dos Valores definidos.
 def validate_environment(config: Config):
-    if config.ENVIRONMENT not in EnvironmentType.__members__.keys():
-        raise ValueError(f"ENVIRONMENT '{config.ENVIRONMENT}' não é válido. Use um dos seguintes valores: {', '.join(EnvironmentType.__members__.keys())}")
+    if config.ENVIRONMENT.value not in EnvironmentType.__members__.values():
+        raise ValueError(f"ENVIRONMENT '{config.ENVIRONMENT.value}' não é válido. Use um dos seguintes valores: {', '.join(EnvironmentType.__members__.values())}")
 
 try:
     # Carregando as configurações.

@@ -1,0 +1,30 @@
+# version: '3.9'
+
+services:
+  vector-db:
+    image: semitechnologies/weaviate:latest  # Usando a última imagem do Weaviate
+    container_name: weaviate  # Nome do nosso container para o banco vetorial
+    environment:
+      - QUERY_DEFAULTS=enableGraphQL:true  # Habilitando a API GraphQL
+      - AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true  # Permitindo o acesso anônimo
+      - PERSISTENCE_DATA_PATH=/var/lib/weaviate  # Definindo o diretório de persistência dos dados
+    ports:
+      - "8080:8080"  # Mapeando a porta do Weaviate para o host
+    volumes:
+      - weaviate_data:/var/lib/weaviate  # Persistência dos dados do Weaviate
+    restart: always  # Garantindo que o container reinicie automaticamente em caso de falhas
+
+  app:  # O serviço para a sua aplicação, provavelmente FastAPI
+    build:
+      context: .  # Contexto de construção, indicando que o Dockerfile está no diretório atual
+      dockerfile: ./container/Dockerfile  # Caminho para o Dockerfile da aplicação
+    container_name: codiceJurico  # Nome do container da aplicação
+    ports:
+      - "8000:8000"  # Mapeando a porta da aplicação para o host
+    depends_on:
+      - vector-db  # Garantindo que o serviço do banco vetorial seja iniciado antes da aplicação
+    environment:
+      - WEAVIATE_URL=http://vector-db:8080  # URL de conexão com o banco vetorial (Weaviate)
+      
+volumes:
+  weaviate_data:  # Definindo o volume para persistir os dados do Weaviate

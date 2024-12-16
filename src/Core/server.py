@@ -5,6 +5,9 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
 
+from src.Core.Dependencies.logging import Logging
+
+
 # Função para Adicionar as Rotas da Nossa Aplicação;
 def init_routers(app_: FastAPI) -> None:
 #    app_.include_router()
@@ -25,16 +28,25 @@ def make_middleware() -> List[Middleware]:
     return middleware
 
 
+# Incluindo Logger
+def init_logger(app_: FastAPI) -> None:
+    logger = Logging()
+    logger.add_logging(app_=app_)
+
+
 # Função para instaciar a nossa instancia do Fast API.
 def create_app() -> FastAPI:
     app_ = FastAPI(
         title="Códice Jurídico",
         description="An Example of AI Application by Everton Simões.",
         version="1.0.0",
-        middleware=make_middleware(),
+        middleware=make_middleware(), # Configurando os Middlewares
     )
 
-    init_routers(app_=app_)
+    init_routers(app_=app_) # Adicionando as Rotas a aplicação
+
+    init_logger(app_=app_) # Inicializar o logger
     return app_
 
 app: FastAPI = create_app()
+
