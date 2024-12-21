@@ -23,6 +23,8 @@ services:
       - "8000:8000"  # Mapeando a porta da aplicação para o host
     depends_on:
       - vector-db  # Garantindo que o serviço do banco vetorial seja iniciado antes da aplicação
+    volumes:
+      - ./src:/app/src  # Mapeamento da pasta src para dentro do container
     environment:
       - WEAVIATE_URL=http://vector-db:8080  # URL de conexão com o banco vetorial (Weaviate)
       

@@ -12,6 +12,9 @@ pydantic = "^2.10.3"
 python-dotenv = "^1.0.1"
 fastapi = "^0.115.6"
 pydantic-settings = "^2.6.1"
+llama-index-llms-gemini = "^0.4.1"
+llama-index = "^0.12.5"
+weaviate = "^0.1.2"
 
 
 [build-system]

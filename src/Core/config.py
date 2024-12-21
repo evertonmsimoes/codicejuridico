@@ -23,7 +23,8 @@ class BaseConfig(BaseSettings):
 class Config(BaseConfig):
     DEBUG: int = int(os.getenv("DEBUG", 0)) # Aqui desativamos ou Ativamos os Logs Detalhados.
     ENVIRONMENT: EnvironmentType = EnvironmentType(os.getenv("ENVIRONMENT", "development")) # Aqui Definimos o tipo de Ambiente que estamos trabalhando.
-    API_KEY: str = str(os.getenv("API_KEY"))
+    API_KEY: str = str(os.getenv("API_KEY")) # Chave da Api para se conectar com o Gemini
+    DATABASE: str = str(os.getenv("DATABASE", "http://localhost:8080"))
 
 # Função para validar se o ENVIRONMENT esté dentro dos Valores definidos.
 def validate_environment(config: Config):
