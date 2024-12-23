@@ -10,6 +10,10 @@ python = "^3.12"
 jupyter = "^1.1.1"
 numpy = "1.26.4"
 sentence-transformers = "^3.3.1"
+matplotlib = "^3.10.0"
+scikit-learn = "^1.6.0"
+weaviate = "^0.1.2"
+weaviate-client = "^4.10.2"
 
 
 [build-system]
