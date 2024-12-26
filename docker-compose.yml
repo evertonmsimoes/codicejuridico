@@ -9,8 +9,11 @@ services:
       - AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true  # Permitindo o acesso anônimo
       - PERSISTENCE_DATA_PATH=/var/lib/weaviate  # Definindo o diretório de persistência dos dados
       - CLUSTER_HOSTNAME=localhost  # Forçando nó único
+      - ENABLE_MODULES=all # Habilitar gRPC
+      - GRPC_PORT=50051 
     ports:
       - "8080:8080"  # Mapeando a porta do Weaviate para o host
+      - "50051:50051"  # Porta para gRPC
     volumes:
       - weaviate_data:/var/lib/weaviate  # Persistência dos dados do Weaviate
     restart: always  # Garantindo que o container reinicie automaticamente em caso de falhas

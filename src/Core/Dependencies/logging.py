@@ -13,7 +13,7 @@ class Logging:
         self.logger = logging.getLogger("Códice Jurídico")
 
     def add_logging(self, app_: FastAPI) -> None:
-        @app_.middleware("http")
+        @app_.middleware("http") # Assinatura que permite filtrar que permite filtrar as requisições HTTP que entram em uma Aplicação;
         async def log_request(request: Request, call_next):
             start_time = time()
             response = await call_next(request)
