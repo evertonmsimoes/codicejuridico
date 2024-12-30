@@ -24,7 +24,9 @@ class Config(BaseConfig):
     DEBUG: int = int(os.getenv("DEBUG", 0)) # Aqui desativamos ou Ativamos os Logs Detalhados.
     ENVIRONMENT: EnvironmentType = EnvironmentType(os.getenv("ENVIRONMENT", "development")) # Aqui Definimos o tipo de Ambiente que estamos trabalhando.
     API_KEY: str = str(os.getenv("API_KEY")) # Chave da Api para se conectar com o Gemini
-    DATABASE: str = str(os.getenv("DATABASE", "http://localhost:8080"))
+    VECTORDB_HOST: str = str(os.getenv("VECTORDB_HOST", "http://localhost:8080")) # Configurando o IP do banco de Dadaos Vetorial.
+    VECTORDB_HTTPPORT: int = int(os.getenv("VECTORDB_HTTPPORT", 8080)) # Configurando porta para acesso HTTP do Banco vetorial.
+    VECTORDB_GRCPPORT: int = int(os.getenv("VECTORDB_GRCPPORT", 50051)) # Configuração da porta GRCP do Vector DB
 
 # Função para validar se o ENVIRONMENT esté dentro dos Valores definidos.
 def validate_environment(config: Config):

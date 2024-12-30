@@ -16,6 +16,7 @@ llama-index-llms-gemini = "^0.4.1"
 llama-index = "^0.12.5"
 weaviate = "^0.1.2"
 numpy = "^1.24"
+protobuf = "^4.21.6"
 
 
 [build-system]

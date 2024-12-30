@@ -1,6 +1,6 @@
 import uvicorn
 
-from src.Core.config import config
+from src.Core import config
 
 if __name__ == "__main__":
     uvicorn.run(
