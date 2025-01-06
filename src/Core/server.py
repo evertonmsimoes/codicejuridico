@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.Core.config import Config
 
 from src.Core.Dependencies.logging import Logging
 
@@ -40,6 +41,8 @@ def create_app() -> FastAPI:
         title="Códice Jurídico",
         description="An Example of AI Application by Everton Simões.",
         version="1.0.0",
+        docs_url=None if Config.ENVIRONMENT == "production" else "/docs", # Definindo configurações do Swagger UI, para que a documentação seja visível apenas em ambientes de teste.
+        redoc_url=None if Config.ENVIRONMENT == "production" else "/rdoc",
         middleware=make_middleware(), # Configurando os Middlewares
     )
 
