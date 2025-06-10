@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator, Field, ValidationInfo
 from src.Core.Enums import VectoreDataBaseNames
 
-class UpdateIndex(BaseModel):
+class CreateUpdateIndex(BaseModel):
 
     # Campo referente ao Nome do Index
     index_name: str

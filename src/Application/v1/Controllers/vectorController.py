@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
-from src.Core.Schemas.Requests import UpdateIndex
+from src.Core.Schemas.Requests import CreateUpdateIndex
 
 
 router = APIRouter(prefix="/v1")
 
 
 @router.post("/create_index")
-async def createIndex(request: UpdateIndex):
+async def createIndex(request: CreateUpdateIndex):
     try:
         
         return {

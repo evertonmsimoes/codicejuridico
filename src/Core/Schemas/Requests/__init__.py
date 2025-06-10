@@ -1,3 +1,3 @@
-from src.Core.Schemas.Requests.updateIndex import UpdateIndex as UpdateIndex
+from Core.Schemas.Requests.CreateUpdateIndex import CreateUpdateIndex as CreateUpdateIndex
 
-__all__ = ["UpdateIndex"]
+__all__ = ["CreateUpdateIndex"]
